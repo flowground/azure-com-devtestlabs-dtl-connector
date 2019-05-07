@@ -1,0 +1,102 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "labName": {
+            "required": true,
+            "type": "string"
+        },
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "Represents an update resource",
+                    "properties": {
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "The tags of the resource.",
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            ],
+            "description": "Properties of an artifact source.",
+            "properties": {
+                "properties": {
+                    "description": "The properties of the resource.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "armTemplateFolderPath": {
+                            "description": "The folder containing Azure Resource Manager templates.",
+                            "type": "string"
+                        },
+                        "branchRef": {
+                            "description": "The artifact source's branch reference.",
+                            "type": "string"
+                        },
+                        "displayName": {
+                            "description": "The artifact source's display name.",
+                            "type": "string"
+                        },
+                        "folderPath": {
+                            "description": "The folder containing artifacts.",
+                            "type": "string"
+                        },
+                        "securityToken": {
+                            "description": "The security token to authenticate to the artifact source.",
+                            "type": "string"
+                        },
+                        "sourceType": {
+                            "description": "The artifact source's type.",
+                            "enum": [
+                                "VsoGit",
+                                "GitHub"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "SourceControlType"
+                            }
+                        },
+                        "status": {
+                            "description": "Indicates if the artifact source is enabled (values: Enabled, Disabled).",
+                            "enum": [
+                                "Enabled",
+                                "Disabled"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "EnableStatus"
+                            }
+                        },
+                        "uri": {
+                            "description": "The artifact source's URI.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-09-15"
+        }
+    }
+}

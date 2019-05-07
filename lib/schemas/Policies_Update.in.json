@@ -1,0 +1,114 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "labName": {
+            "required": true,
+            "type": "string"
+        },
+        "policySetName": {
+            "required": true,
+            "type": "string"
+        },
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "Represents an update resource",
+                    "properties": {
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "The tags of the resource.",
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            ],
+            "description": "A Policy.",
+            "properties": {
+                "properties": {
+                    "description": "The properties of the resource.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "description": {
+                            "description": "The description of the policy.",
+                            "type": "string"
+                        },
+                        "evaluatorType": {
+                            "description": "The evaluator type of the policy (i.e. AllowedValuesPolicy, MaxValuePolicy).",
+                            "enum": [
+                                "AllowedValuesPolicy",
+                                "MaxValuePolicy"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "PolicyEvaluatorType"
+                            }
+                        },
+                        "factData": {
+                            "description": "The fact data of the policy.",
+                            "type": "string"
+                        },
+                        "factName": {
+                            "description": "The fact name of the policy (e.g. LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc.",
+                            "enum": [
+                                "UserOwnedLabVmCount",
+                                "UserOwnedLabPremiumVmCount",
+                                "LabVmCount",
+                                "LabPremiumVmCount",
+                                "LabVmSize",
+                                "GalleryImage",
+                                "UserOwnedLabVmCountInSubnet",
+                                "LabTargetCost",
+                                "EnvironmentTemplate",
+                                "ScheduleEditPermission"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "PolicyFactName"
+                            }
+                        },
+                        "status": {
+                            "description": "The status of the policy.",
+                            "enum": [
+                                "Enabled",
+                                "Disabled"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "PolicyStatus"
+                            }
+                        },
+                        "threshold": {
+                            "description": "The threshold of the policy (i.e. a number for MaxValuePolicy, and a JSON array of values for AllowedValuesPolicy).",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-09-15"
+        }
+    }
+}

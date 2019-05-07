@@ -1,0 +1,92 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "labName": {
+            "required": true,
+            "type": "string"
+        },
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "Represents an update resource",
+                    "properties": {
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "The tags of the resource.",
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            ],
+            "description": "A notification.",
+            "properties": {
+                "properties": {
+                    "description": "The properties of the resource.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "description": {
+                            "description": "Description of notification.",
+                            "type": "string"
+                        },
+                        "emailRecipient": {
+                            "description": "The email recipient to send notifications to (can be a list of semi-colon separated email addresses).",
+                            "type": "string"
+                        },
+                        "events": {
+                            "description": "The list of event for which this notification is enabled.",
+                            "items": {
+                                "description": "An event to be notified for.",
+                                "properties": {
+                                    "eventName": {
+                                        "description": "The event type for which this notification is enabled (i.e. AutoShutdown, Cost)",
+                                        "enum": [
+                                            "AutoShutdown",
+                                            "Cost"
+                                        ],
+                                        "type": "string",
+                                        "x-ms-enum": {
+                                            "modelAsString": true,
+                                            "name": "NotificationChannelEventType"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "notificationLocale": {
+                            "description": "The locale to use when sending a notification (fallback for unsupported languages is EN).",
+                            "type": "string"
+                        },
+                        "webHookUrl": {
+                            "description": "The webhook URL to send notifications to.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-09-15"
+        }
+    }
+}

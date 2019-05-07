@@ -1,0 +1,66 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "labName": {
+            "required": true,
+            "type": "string"
+        },
+        "userName": {
+            "required": true,
+            "type": "string"
+        },
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "Represents an update resource",
+                    "properties": {
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "The tags of the resource.",
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            ],
+            "description": "A Service Fabric.",
+            "properties": {
+                "properties": {
+                    "description": "The properties of the resource.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "environmentId": {
+                            "description": "The resource id of the environment under which the service fabric resource is present",
+                            "type": "string"
+                        },
+                        "externalServiceFabricId": {
+                            "description": "The backing service fabric resource's id",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-09-15"
+        }
+    }
+}

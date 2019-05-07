@@ -1,0 +1,95 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "labName": {
+            "required": true,
+            "type": "string"
+        },
+        "userName": {
+            "required": true,
+            "type": "string"
+        },
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "Represents an update resource",
+                    "properties": {
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "The tags of the resource.",
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            ],
+            "description": "A Disk.",
+            "properties": {
+                "properties": {
+                    "description": "The properties of the resource.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "diskBlobName": {
+                            "description": "When backed by a blob, the name of the VHD blob without extension.",
+                            "type": "string"
+                        },
+                        "diskSizeGiB": {
+                            "description": "The size of the disk in Gibibytes.",
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "diskType": {
+                            "description": "The storage type for the disk (i.e. Standard, Premium).",
+                            "enum": [
+                                "Standard",
+                                "Premium"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "StorageType"
+                            }
+                        },
+                        "diskUri": {
+                            "description": "When backed by a blob, the URI of underlying blob.",
+                            "type": "string"
+                        },
+                        "hostCaching": {
+                            "description": "The host caching policy of the disk (i.e. None, ReadOnly, ReadWrite).",
+                            "type": "string"
+                        },
+                        "leasedByLabVmId": {
+                            "description": "The resource ID of the VM to which this disk is leased.",
+                            "type": "string"
+                        },
+                        "managedDiskId": {
+                            "description": "When backed by managed disk, this is the ID of the compute disk resource.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-09-15"
+        }
+    }
+}

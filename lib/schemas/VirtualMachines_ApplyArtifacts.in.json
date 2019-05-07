@@ -1,0 +1,85 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "labName": {
+            "required": true,
+            "type": "string"
+        },
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Request body for applying artifacts to a virtual machine.",
+            "properties": {
+                "artifacts": {
+                    "description": "The list of artifacts to apply.",
+                    "items": {
+                        "description": "Properties of an artifact.",
+                        "properties": {
+                            "artifactId": {
+                                "description": "The artifact's identifier.",
+                                "type": "string"
+                            },
+                            "artifactTitle": {
+                                "description": "The artifact's title.",
+                                "type": "string"
+                            },
+                            "deploymentStatusMessage": {
+                                "description": "The status message from the deployment.",
+                                "type": "string"
+                            },
+                            "installTime": {
+                                "description": "The time that the artifact starts to install on the virtual machine.",
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            "parameters": {
+                                "description": "The parameters of the artifact.",
+                                "items": {
+                                    "description": "Properties of an artifact parameter.",
+                                    "properties": {
+                                        "name": {
+                                            "description": "The name of the artifact parameter.",
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "description": "The value of the artifact parameter.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "status": {
+                                "description": "The status of the artifact.",
+                                "type": "string"
+                            },
+                            "vmExtensionStatusMessage": {
+                                "description": "The status message from the virtual machine extension.",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-09-15"
+        }
+    }
+}

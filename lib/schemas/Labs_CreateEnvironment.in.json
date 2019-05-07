@@ -1,0 +1,529 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Properties for creating a virtual machine.",
+            "properties": {
+                "location": {
+                    "description": "The location of the new virtual machine or environment",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name of the virtual machine or environment",
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "The properties of the resource.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "allowClaim": {
+                            "description": "Indicates whether another user can take ownership of the virtual machine",
+                            "type": "boolean"
+                        },
+                        "artifactDeploymentStatus": {
+                            "description": "The artifact deployment status for the virtual machine.",
+                            "properties": {
+                                "artifactsApplied": {
+                                    "description": "The total count of the artifacts that were successfully applied.",
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "deploymentStatus": {
+                                    "description": "The deployment status of the artifact.",
+                                    "type": "string"
+                                },
+                                "totalArtifacts": {
+                                    "description": "The total count of the artifacts that were tentatively applied.",
+                                    "format": "int32",
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "artifacts": {
+                            "description": "The artifacts to be installed on the virtual machine.",
+                            "items": {
+                                "description": "Properties of an artifact.",
+                                "properties": {
+                                    "artifactId": {
+                                        "description": "The artifact's identifier.",
+                                        "type": "string"
+                                    },
+                                    "artifactTitle": {
+                                        "description": "The artifact's title.",
+                                        "type": "string"
+                                    },
+                                    "deploymentStatusMessage": {
+                                        "description": "The status message from the deployment.",
+                                        "type": "string"
+                                    },
+                                    "installTime": {
+                                        "description": "The time that the artifact starts to install on the virtual machine.",
+                                        "format": "date-time",
+                                        "type": "string"
+                                    },
+                                    "parameters": {
+                                        "description": "The parameters of the artifact.",
+                                        "items": {
+                                            "description": "Properties of an artifact parameter.",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "The name of the artifact parameter.",
+                                                    "type": "string"
+                                                },
+                                                "value": {
+                                                    "description": "The value of the artifact parameter.",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "status": {
+                                        "description": "The status of the artifact.",
+                                        "type": "string"
+                                    },
+                                    "vmExtensionStatusMessage": {
+                                        "description": "The status message from the virtual machine extension.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "bulkCreationParameters": {
+                            "description": "The number of virtual machine instances to create.",
+                            "properties": {
+                                "instanceCount": {
+                                    "description": "The number of virtual machine instances to create.",
+                                    "format": "int32",
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "computeId": {
+                            "description": "The resource identifier (Microsoft.Compute) of the virtual machine.",
+                            "type": "string"
+                        },
+                        "createdByUser": {
+                            "description": "The email address of creator of the virtual machine.",
+                            "type": "string"
+                        },
+                        "createdByUserId": {
+                            "description": "The object identifier of the creator of the virtual machine.",
+                            "type": "string"
+                        },
+                        "createdDate": {
+                            "description": "The creation date of the virtual machine.",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "customImageId": {
+                            "description": "The custom image identifier of the virtual machine.",
+                            "type": "string"
+                        },
+                        "dataDiskParameters": {
+                            "description": "New or existing data disks to attach to the virtual machine after creation",
+                            "items": {
+                                "description": "Request body for adding a new or existing data disk to a virtual machine.",
+                                "properties": {
+                                    "attachNewDataDiskOptions": {
+                                        "description": "Specifies options to attach a new disk to the virtual machine.",
+                                        "properties": {
+                                            "diskName": {
+                                                "description": "The name of the disk to be attached.",
+                                                "type": "string"
+                                            },
+                                            "diskSizeGiB": {
+                                                "description": "Size of the disk to be attached in Gibibytes.",
+                                                "format": "int32",
+                                                "type": "integer"
+                                            },
+                                            "diskType": {
+                                                "description": "The storage type for the disk (i.e. Standard, Premium).",
+                                                "enum": [
+                                                    "Standard",
+                                                    "Premium"
+                                                ],
+                                                "type": "string",
+                                                "x-ms-enum": {
+                                                    "modelAsString": true,
+                                                    "name": "StorageType"
+                                                }
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "existingLabDiskId": {
+                                        "description": "Specifies the existing lab disk id to attach to virtual machine.",
+                                        "type": "string"
+                                    },
+                                    "hostCaching": {
+                                        "description": "Caching option for a data disk (i.e. None, ReadOnly, ReadWrite).",
+                                        "enum": [
+                                            "None",
+                                            "ReadOnly",
+                                            "ReadWrite"
+                                        ],
+                                        "type": "string",
+                                        "x-ms-enum": {
+                                            "modelAsString": true,
+                                            "name": "HostCachingOptions"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "disallowPublicIpAddress": {
+                            "description": "Indicates whether the virtual machine is to be created without a public IP address.",
+                            "type": "boolean"
+                        },
+                        "environmentId": {
+                            "description": "The resource ID of the environment that contains this virtual machine, if any.",
+                            "type": "string"
+                        },
+                        "expirationDate": {
+                            "description": "The expiration date for VM.",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "fqdn": {
+                            "description": "The fully-qualified domain name of the virtual machine.",
+                            "type": "string"
+                        },
+                        "galleryImageReference": {
+                            "description": "The Microsoft Azure Marketplace image reference of the virtual machine.",
+                            "properties": {
+                                "offer": {
+                                    "description": "The offer of the gallery image.",
+                                    "type": "string"
+                                },
+                                "osType": {
+                                    "description": "The OS type of the gallery image.",
+                                    "type": "string"
+                                },
+                                "publisher": {
+                                    "description": "The publisher of the gallery image.",
+                                    "type": "string"
+                                },
+                                "sku": {
+                                    "description": "The SKU of the gallery image.",
+                                    "type": "string"
+                                },
+                                "version": {
+                                    "description": "The version of the gallery image.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "isAuthenticationWithSshKey": {
+                            "description": "Indicates whether this virtual machine uses an SSH key for authentication.",
+                            "type": "boolean"
+                        },
+                        "labSubnetName": {
+                            "description": "The lab subnet name of the virtual machine.",
+                            "type": "string"
+                        },
+                        "labVirtualNetworkId": {
+                            "description": "The lab virtual network identifier of the virtual machine.",
+                            "type": "string"
+                        },
+                        "lastKnownPowerState": {
+                            "description": "Last known compute power state captured in DTL",
+                            "type": "string"
+                        },
+                        "networkInterface": {
+                            "description": "The network interface properties.",
+                            "properties": {
+                                "dnsName": {
+                                    "description": "The DNS name.",
+                                    "type": "string"
+                                },
+                                "privateIpAddress": {
+                                    "description": "The private IP address.",
+                                    "type": "string"
+                                },
+                                "publicIpAddress": {
+                                    "description": "The public IP address.",
+                                    "type": "string"
+                                },
+                                "publicIpAddressId": {
+                                    "description": "The resource ID of the public IP address.",
+                                    "type": "string"
+                                },
+                                "rdpAuthority": {
+                                    "description": "The RdpAuthority property is a server DNS host name or IP address followed by the service port number for RDP (Remote Desktop Protocol).",
+                                    "type": "string"
+                                },
+                                "sharedPublicIpAddressConfiguration": {
+                                    "description": "The configuration for sharing a public IP address across multiple virtual machines.",
+                                    "properties": {
+                                        "inboundNatRules": {
+                                            "description": "The incoming NAT rules",
+                                            "items": {
+                                                "description": "A rule for NAT - exposing a VM's port (backendPort) on the public IP address using a load balancer.",
+                                                "properties": {
+                                                    "backendPort": {
+                                                        "description": "The port to which the external traffic will be redirected.",
+                                                        "format": "int32",
+                                                        "type": "integer"
+                                                    },
+                                                    "frontendPort": {
+                                                        "description": "The external endpoint port of the inbound connection. Possible values range between 1 and 65535, inclusive. If unspecified, a value will be allocated automatically.",
+                                                        "format": "int32",
+                                                        "type": "integer"
+                                                    },
+                                                    "transportProtocol": {
+                                                        "description": "The transport protocol for the endpoint.",
+                                                        "enum": [
+                                                            "Tcp",
+                                                            "Udp"
+                                                        ],
+                                                        "type": "string",
+                                                        "x-ms-enum": {
+                                                            "modelAsString": true,
+                                                            "name": "TransportProtocol"
+                                                        }
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "sshAuthority": {
+                                    "description": "The SshAuthority property is a server DNS host name or IP address followed by the service port number for SSH.",
+                                    "type": "string"
+                                },
+                                "subnetId": {
+                                    "description": "The resource ID of the sub net.",
+                                    "type": "string"
+                                },
+                                "virtualNetworkId": {
+                                    "description": "The resource ID of the virtual network.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "notes": {
+                            "description": "The notes of the virtual machine.",
+                            "type": "string"
+                        },
+                        "osType": {
+                            "description": "The OS type of the virtual machine.",
+                            "type": "string"
+                        },
+                        "ownerObjectId": {
+                            "description": "The object identifier of the owner of the virtual machine.",
+                            "type": "string"
+                        },
+                        "ownerUserPrincipalName": {
+                            "description": "The user principal name of the virtual machine owner.",
+                            "type": "string"
+                        },
+                        "password": {
+                            "description": "The password of the virtual machine administrator.",
+                            "type": "string"
+                        },
+                        "planId": {
+                            "description": "The id of the plan associated with the virtual machine image",
+                            "type": "string"
+                        },
+                        "scheduleParameters": {
+                            "description": "Virtual Machine schedules to be created",
+                            "items": {
+                                "description": "Properties for creating a schedule.",
+                                "properties": {
+                                    "location": {
+                                        "description": "The location of the new virtual machine or environment",
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "description": "The name of the virtual machine or environment",
+                                        "type": "string"
+                                    },
+                                    "properties": {
+                                        "description": "The properties of the schedule.",
+                                        "x-ms-client-flatten": true,
+                                        "properties": {
+                                            "dailyRecurrence": {
+                                                "description": "If the schedule will occur once each day of the week, specify the daily recurrence.",
+                                                "properties": {
+                                                    "time": {
+                                                        "description": "The time of day the schedule will occur.",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "hourlyRecurrence": {
+                                                "description": "If the schedule will occur multiple times a day, specify the hourly recurrence.",
+                                                "properties": {
+                                                    "minute": {
+                                                        "description": "Minutes of the hour the schedule will run.",
+                                                        "format": "int32",
+                                                        "type": "integer"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "notificationSettings": {
+                                                "description": "Notification settings.",
+                                                "properties": {
+                                                    "emailRecipient": {
+                                                        "description": "The email recipient to send notifications to (can be a list of semi-colon separated email addresses).",
+                                                        "type": "string"
+                                                    },
+                                                    "notificationLocale": {
+                                                        "description": "The locale to use when sending a notification (fallback for unsupported languages is EN).",
+                                                        "type": "string"
+                                                    },
+                                                    "status": {
+                                                        "description": "If notifications are enabled for this schedule (i.e. Enabled, Disabled).",
+                                                        "enum": [
+                                                            "Enabled",
+                                                            "Disabled"
+                                                        ],
+                                                        "type": "string",
+                                                        "x-ms-enum": {
+                                                            "modelAsString": true,
+                                                            "name": "EnableStatus"
+                                                        }
+                                                    },
+                                                    "timeInMinutes": {
+                                                        "description": "Time in minutes before event at which notification will be sent.",
+                                                        "format": "int32",
+                                                        "type": "integer"
+                                                    },
+                                                    "webhookUrl": {
+                                                        "description": "The webhook URL to which the notification will be sent.",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "status": {
+                                                "description": "The status of the schedule (i.e. Enabled, Disabled)",
+                                                "enum": [
+                                                    "Enabled",
+                                                    "Disabled"
+                                                ],
+                                                "type": "string",
+                                                "x-ms-enum": {
+                                                    "modelAsString": true,
+                                                    "name": "EnableStatus"
+                                                }
+                                            },
+                                            "targetResourceId": {
+                                                "description": "The resource ID to which the schedule belongs",
+                                                "type": "string"
+                                            },
+                                            "taskType": {
+                                                "description": "The task type of the schedule (e.g. LabVmsShutdownTask, LabVmAutoStart).",
+                                                "type": "string"
+                                            },
+                                            "timeZoneId": {
+                                                "description": "The time zone ID (e.g. Pacific Standard time).",
+                                                "type": "string"
+                                            },
+                                            "weeklyRecurrence": {
+                                                "description": "If the schedule will occur only some days of the week, specify the weekly recurrence.",
+                                                "properties": {
+                                                    "time": {
+                                                        "description": "The time of the day the schedule will occur.",
+                                                        "type": "string"
+                                                    },
+                                                    "weekdays": {
+                                                        "description": "The days of the week for which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.).",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "type": "array"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "tags": {
+                                        "additionalProperties": {
+                                            "type": "string"
+                                        },
+                                        "description": "The tags of the resource.",
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "size": {
+                            "description": "The size of the virtual machine.",
+                            "type": "string"
+                        },
+                        "sshKey": {
+                            "description": "The SSH key of the virtual machine administrator.",
+                            "type": "string"
+                        },
+                        "storageType": {
+                            "description": "Storage type to use for virtual machine (i.e. Standard, Premium).",
+                            "type": "string"
+                        },
+                        "userName": {
+                            "description": "The user name of the virtual machine.",
+                            "type": "string"
+                        },
+                        "virtualMachineCreationSource": {
+                            "description": "Tells source of creation of lab virtual machine. Output property only.",
+                            "enum": [
+                                "FromCustomImage",
+                                "FromGalleryImage"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "VirtualMachineCreationSource"
+                            }
+                        }
+                    },
+                    "type": "object"
+                },
+                "tags": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The tags of the resource.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-09-15"
+        }
+    }
+}

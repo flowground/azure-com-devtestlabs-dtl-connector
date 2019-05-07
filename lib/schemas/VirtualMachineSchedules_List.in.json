@@ -1,0 +1,43 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "labName": {
+            "required": true,
+            "type": "string"
+        },
+        "virtualMachineName": {
+            "required": true,
+            "type": "string"
+        },
+        "_expand": {
+            "required": false,
+            "type": "string"
+        },
+        "_filter": {
+            "required": false,
+            "type": "string"
+        },
+        "_top": {
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+        },
+        "_orderby": {
+            "required": false,
+            "type": "string"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-09-15"
+        }
+    }
+}

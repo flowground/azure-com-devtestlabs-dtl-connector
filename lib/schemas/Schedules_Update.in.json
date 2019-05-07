@@ -1,0 +1,151 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "labName": {
+            "required": true,
+            "type": "string"
+        },
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "Represents an update resource",
+                    "properties": {
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "The tags of the resource.",
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            ],
+            "description": "A schedule.",
+            "properties": {
+                "properties": {
+                    "description": "The properties of the resource.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "dailyRecurrence": {
+                            "description": "If the schedule will occur once each day of the week, specify the daily recurrence.",
+                            "properties": {
+                                "time": {
+                                    "description": "The time of day the schedule will occur.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "hourlyRecurrence": {
+                            "description": "If the schedule will occur multiple times a day, specify the hourly recurrence.",
+                            "properties": {
+                                "minute": {
+                                    "description": "Minutes of the hour the schedule will run.",
+                                    "format": "int32",
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "notificationSettings": {
+                            "description": "Notification settings.",
+                            "properties": {
+                                "emailRecipient": {
+                                    "description": "The email recipient to send notifications to (can be a list of semi-colon separated email addresses).",
+                                    "type": "string"
+                                },
+                                "notificationLocale": {
+                                    "description": "The locale to use when sending a notification (fallback for unsupported languages is EN).",
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "description": "If notifications are enabled for this schedule (i.e. Enabled, Disabled).",
+                                    "enum": [
+                                        "Enabled",
+                                        "Disabled"
+                                    ],
+                                    "type": "string",
+                                    "x-ms-enum": {
+                                        "modelAsString": true,
+                                        "name": "EnableStatus"
+                                    }
+                                },
+                                "timeInMinutes": {
+                                    "description": "Time in minutes before event at which notification will be sent.",
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "webhookUrl": {
+                                    "description": "The webhook URL to which the notification will be sent.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "status": {
+                            "description": "The status of the schedule (i.e. Enabled, Disabled)",
+                            "enum": [
+                                "Enabled",
+                                "Disabled"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "EnableStatus"
+                            }
+                        },
+                        "targetResourceId": {
+                            "description": "The resource ID to which the schedule belongs",
+                            "type": "string"
+                        },
+                        "taskType": {
+                            "description": "The task type of the schedule (e.g. LabVmsShutdownTask, LabVmAutoStart).",
+                            "type": "string"
+                        },
+                        "timeZoneId": {
+                            "description": "The time zone ID (e.g. Pacific Standard time).",
+                            "type": "string"
+                        },
+                        "weeklyRecurrence": {
+                            "description": "If the schedule will occur only some days of the week, specify the weekly recurrence.",
+                            "properties": {
+                                "time": {
+                                    "description": "The time of the day the schedule will occur.",
+                                    "type": "string"
+                                },
+                                "weekdays": {
+                                    "description": "The days of the week for which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.).",
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "type": "array"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-09-15"
+        }
+    }
+}

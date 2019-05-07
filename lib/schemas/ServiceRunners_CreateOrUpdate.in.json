@@ -1,0 +1,89 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "labName": {
+            "required": true,
+            "type": "string"
+        },
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "An Azure resource.",
+                    "properties": {
+                        "id": {
+                            "description": "The identifier of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "location": {
+                            "description": "The location of the resource.",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "The name of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "The tags of the resource.",
+                            "type": "object"
+                        },
+                        "type": {
+                            "description": "The type of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "type": "object",
+                    "x-ms-azure-resource": true
+                }
+            ],
+            "description": "A container for a managed identity to execute DevTest lab services.",
+            "properties": {
+                "identity": {
+                    "description": "The identity of the resource.",
+                    "properties": {
+                        "clientSecretUrl": {
+                            "description": "The client secret URL of the identity.",
+                            "type": "string"
+                        },
+                        "principalId": {
+                            "description": "The principal id of resource identity.",
+                            "type": "string"
+                        },
+                        "tenantId": {
+                            "description": "The tenant identifier of resource.",
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "Managed identity.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-09-15"
+        }
+    }
+}

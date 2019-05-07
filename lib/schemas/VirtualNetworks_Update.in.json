@@ -1,0 +1,174 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "labName": {
+            "required": true,
+            "type": "string"
+        },
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "Represents an update resource",
+                    "properties": {
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "The tags of the resource.",
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            ],
+            "description": "A virtual network.",
+            "properties": {
+                "properties": {
+                    "description": "The properties of the resource.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "allowedSubnets": {
+                            "description": "The allowed subnets of the virtual network.",
+                            "items": {
+                                "description": "Subnet information.",
+                                "properties": {
+                                    "allowPublicIp": {
+                                        "description": "The permission policy of the subnet for allowing public IP addresses (i.e. Allow, Deny)).",
+                                        "enum": [
+                                            "Default",
+                                            "Deny",
+                                            "Allow"
+                                        ],
+                                        "type": "string",
+                                        "x-ms-enum": {
+                                            "modelAsString": true,
+                                            "name": "UsagePermissionType"
+                                        }
+                                    },
+                                    "labSubnetName": {
+                                        "description": "The name of the subnet as seen in the lab.",
+                                        "type": "string"
+                                    },
+                                    "resourceId": {
+                                        "description": "The resource ID of the subnet.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "description": {
+                            "description": "The description of the virtual network.",
+                            "type": "string"
+                        },
+                        "externalProviderResourceId": {
+                            "description": "The Microsoft.Network resource identifier of the virtual network.",
+                            "type": "string"
+                        },
+                        "subnetOverrides": {
+                            "description": "The subnet overrides of the virtual network.",
+                            "items": {
+                                "description": "Property overrides on a subnet of a virtual network.",
+                                "properties": {
+                                    "labSubnetName": {
+                                        "description": "The name given to the subnet within the lab.",
+                                        "type": "string"
+                                    },
+                                    "resourceId": {
+                                        "description": "The resource ID of the subnet.",
+                                        "type": "string"
+                                    },
+                                    "sharedPublicIpAddressConfiguration": {
+                                        "description": "Properties that virtual machines on this subnet will share.",
+                                        "properties": {
+                                            "allowedPorts": {
+                                                "description": "Backend ports that virtual machines on this subnet are allowed to expose",
+                                                "items": {
+                                                    "description": "Properties of a network port.",
+                                                    "properties": {
+                                                        "backendPort": {
+                                                            "description": "Backend port of the target virtual machine.",
+                                                            "format": "int32",
+                                                            "type": "integer"
+                                                        },
+                                                        "transportProtocol": {
+                                                            "description": "Protocol type of the port.",
+                                                            "enum": [
+                                                                "Tcp",
+                                                                "Udp"
+                                                            ],
+                                                            "type": "string",
+                                                            "x-ms-enum": {
+                                                                "modelAsString": true,
+                                                                "name": "TransportProtocol"
+                                                            }
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "type": "array"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "useInVmCreationPermission": {
+                                        "description": "Indicates whether this subnet can be used during virtual machine creation (i.e. Allow, Deny).",
+                                        "enum": [
+                                            "Default",
+                                            "Deny",
+                                            "Allow"
+                                        ],
+                                        "type": "string",
+                                        "x-ms-enum": {
+                                            "modelAsString": true,
+                                            "name": "UsagePermissionType"
+                                        }
+                                    },
+                                    "usePublicIpAddressPermission": {
+                                        "description": "Indicates whether public IP addresses can be assigned to virtual machines on this subnet (i.e. Allow, Deny).",
+                                        "enum": [
+                                            "Default",
+                                            "Deny",
+                                            "Allow"
+                                        ],
+                                        "type": "string",
+                                        "x-ms-enum": {
+                                            "modelAsString": true,
+                                            "name": "UsagePermissionType"
+                                        }
+                                    },
+                                    "virtualNetworkPoolName": {
+                                        "description": "The virtual network pool associated with this subnet.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-09-15"
+        }
+    }
+}

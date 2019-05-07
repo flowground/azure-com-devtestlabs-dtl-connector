@@ -1,0 +1,58 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "labName": {
+            "required": true,
+            "type": "string"
+        },
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Request body for evaluating a policy set.",
+            "properties": {
+                "policies": {
+                    "description": "Policies to evaluate.",
+                    "items": {
+                        "description": "Properties for evaluating a policy set.",
+                        "properties": {
+                            "factData": {
+                                "description": "The fact data.",
+                                "type": "string"
+                            },
+                            "factName": {
+                                "description": "The fact name.",
+                                "type": "string"
+                            },
+                            "userObjectId": {
+                                "description": "The user for which policies will be evaluated",
+                                "type": "string"
+                            },
+                            "valueOffset": {
+                                "description": "The value offset.",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-09-15"
+        }
+    }
+}

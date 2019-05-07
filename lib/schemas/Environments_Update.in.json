@@ -1,0 +1,90 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "labName": {
+            "required": true,
+            "type": "string"
+        },
+        "userName": {
+            "required": true,
+            "type": "string"
+        },
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "Represents an update resource",
+                    "properties": {
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "The tags of the resource.",
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            ],
+            "description": "An environment, which is essentially an ARM template deployment.",
+            "properties": {
+                "properties": {
+                    "description": "The properties of the resource.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "armTemplateDisplayName": {
+                            "description": "The display name of the Azure Resource Manager template that produced the environment.",
+                            "type": "string"
+                        },
+                        "deploymentProperties": {
+                            "description": "The deployment properties of the environment.",
+                            "properties": {
+                                "armTemplateId": {
+                                    "description": "The Azure Resource Manager template's identifier.",
+                                    "type": "string"
+                                },
+                                "parameters": {
+                                    "description": "The parameters of the Azure Resource Manager template.",
+                                    "items": {
+                                        "description": "Properties of an Azure Resource Manager template parameter.",
+                                        "properties": {
+                                            "name": {
+                                                "description": "The name of the template parameter.",
+                                                "type": "string"
+                                            },
+                                            "value": {
+                                                "description": "The value of the template parameter.",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-09-15"
+        }
+    }
+}

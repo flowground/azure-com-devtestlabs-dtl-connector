@@ -1,0 +1,255 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "An Azure resource.",
+                    "properties": {
+                        "id": {
+                            "description": "The identifier of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "location": {
+                            "description": "The location of the resource.",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "The name of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "The tags of the resource.",
+                            "type": "object"
+                        },
+                        "type": {
+                            "description": "The type of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "type": "object",
+                    "x-ms-azure-resource": true
+                }
+            ],
+            "description": "A lab.",
+            "properties": {
+                "properties": {
+                    "description": "The properties of the resource.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "announcement": {
+                            "description": "The properties of any lab announcement associated with this lab",
+                            "properties": {
+                                "enabled": {
+                                    "description": "Is the lab announcement active/enabled at this time?",
+                                    "enum": [
+                                        "Enabled",
+                                        "Disabled"
+                                    ],
+                                    "type": "string",
+                                    "x-ms-enum": {
+                                        "modelAsString": true,
+                                        "name": "EnableStatus"
+                                    }
+                                },
+                                "expirationDate": {
+                                    "description": "The time at which the announcement expires (null for never)",
+                                    "format": "date-time",
+                                    "type": "string"
+                                },
+                                "expired": {
+                                    "description": "Has this announcement expired?",
+                                    "type": "boolean"
+                                },
+                                "markdown": {
+                                    "description": "The markdown text (if any) that this lab displays in the UI. If left empty/null, nothing will be shown.",
+                                    "type": "string"
+                                },
+                                "provisioningState": {
+                                    "description": "The provisioning status of the resource.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "description": "The plain text title for the lab announcement",
+                                    "type": "string"
+                                },
+                                "uniqueIdentifier": {
+                                    "description": "The unique immutable identifier of a resource (Guid).",
+                                    "readOnly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "artifactsStorageAccount": {
+                            "description": "The lab's artifact storage account.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "createdDate": {
+                            "description": "The creation date of the lab.",
+                            "format": "date-time",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "defaultPremiumStorageAccount": {
+                            "description": "The lab's default premium storage account.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "defaultStorageAccount": {
+                            "description": "The lab's default storage account.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "environmentPermission": {
+                            "description": "The access rights to be granted to the user when provisioning an environment",
+                            "enum": [
+                                "Reader",
+                                "Contributor"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "EnvironmentPermission"
+                            }
+                        },
+                        "extendedProperties": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Extended properties of the lab used for experimental features",
+                            "type": "object"
+                        },
+                        "labStorageType": {
+                            "description": "Type of storage used by the lab. It can be either Premium or Standard. Default is Premium.",
+                            "enum": [
+                                "Standard",
+                                "Premium"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "StorageType"
+                            }
+                        },
+                        "loadBalancerId": {
+                            "description": "The load balancer used to for lab VMs that use shared IP address.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "mandatoryArtifactsResourceIdsLinux": {
+                            "description": "The ordered list of artifact resource IDs that should be applied on all Linux VM creations by default, prior to the artifacts specified by the user.",
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "mandatoryArtifactsResourceIdsWindows": {
+                            "description": "The ordered list of artifact resource IDs that should be applied on all Windows VM creations by default, prior to the artifacts specified by the user.",
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "networkSecurityGroupId": {
+                            "description": "The Network Security Group attached to the lab VMs Network interfaces to restrict open ports.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "premiumDataDiskStorageAccount": {
+                            "description": "The lab's premium data disk storage account.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "premiumDataDisks": {
+                            "description": "The setting to enable usage of premium data disks.\r\nWhen its value is 'Enabled', creation of standard or premium data disks is allowed.\r\nWhen its value is 'Disabled', only creation of standard data disks is allowed.",
+                            "enum": [
+                                "Disabled",
+                                "Enabled"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "PremiumDataDisk"
+                            }
+                        },
+                        "provisioningState": {
+                            "description": "The provisioning status of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "publicIpId": {
+                            "description": "The public IP address for the lab's load balancer.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "support": {
+                            "description": "The properties of any lab support message associated with this lab",
+                            "properties": {
+                                "enabled": {
+                                    "description": "Is the lab support banner active/enabled at this time?",
+                                    "enum": [
+                                        "Enabled",
+                                        "Disabled"
+                                    ],
+                                    "type": "string",
+                                    "x-ms-enum": {
+                                        "modelAsString": true,
+                                        "name": "EnableStatus"
+                                    }
+                                },
+                                "markdown": {
+                                    "description": "The markdown text (if any) that this lab displays in the UI. If left empty/null, nothing will be shown.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "uniqueIdentifier": {
+                            "description": "The unique immutable identifier of a resource (Guid).",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "vaultName": {
+                            "description": "The lab's Key vault.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "vmCreationResourceGroup": {
+                            "description": "The resource group in which lab virtual machines will be created in.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-09-15"
+        }
+    }
+}

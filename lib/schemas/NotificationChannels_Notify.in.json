@@ -1,0 +1,48 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "labName": {
+            "required": true,
+            "type": "string"
+        },
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Properties for generating a Notification.",
+            "properties": {
+                "eventName": {
+                    "description": "The type of event (i.e. AutoShutdown, Cost)",
+                    "enum": [
+                        "AutoShutdown",
+                        "Cost"
+                    ],
+                    "type": "string",
+                    "x-ms-enum": {
+                        "modelAsString": true,
+                        "name": "NotificationChannelEventType"
+                    }
+                },
+                "jsonPayload": {
+                    "description": "Properties for the notification in json format.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-09-15"
+        }
+    }
+}

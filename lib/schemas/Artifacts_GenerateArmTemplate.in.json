@@ -1,0 +1,74 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "labName": {
+            "required": true,
+            "type": "string"
+        },
+        "artifactSourceName": {
+            "required": true,
+            "type": "string"
+        },
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Parameters for generating an ARM template for deploying artifacts.",
+            "properties": {
+                "fileUploadOptions": {
+                    "description": "Options for uploading the files for the artifact. UploadFilesAndGenerateSasTokens is the default value.",
+                    "enum": [
+                        "UploadFilesAndGenerateSasTokens",
+                        "None"
+                    ],
+                    "type": "string",
+                    "x-ms-enum": {
+                        "modelAsString": true,
+                        "name": "FileUploadOptions"
+                    }
+                },
+                "location": {
+                    "description": "The location of the virtual machine.",
+                    "type": "string"
+                },
+                "parameters": {
+                    "description": "The parameters of the ARM template.",
+                    "items": {
+                        "description": "Information about an artifact's parameter.",
+                        "properties": {
+                            "name": {
+                                "description": "The name of the artifact parameter.",
+                                "type": "string"
+                            },
+                            "value": {
+                                "description": "The value of the artifact parameter.",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "virtualMachineName": {
+                    "description": "The resource name of the virtual machine.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-09-15"
+        }
+    }
+}

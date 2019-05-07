@@ -1,0 +1,94 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "labName": {
+            "required": true,
+            "type": "string"
+        },
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "Represents an update resource",
+                    "properties": {
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "The tags of the resource.",
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            ],
+            "description": "Profile of a lab user.",
+            "properties": {
+                "properties": {
+                    "description": "The properties of the resource.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "identity": {
+                            "description": "The identity of the user.",
+                            "properties": {
+                                "appId": {
+                                    "description": "Set to the app Id of the client JWT making the request.",
+                                    "type": "string"
+                                },
+                                "objectId": {
+                                    "description": "Set to the object Id of the client JWT making the request. Not all users have object Id. For CSP (reseller) scenarios for example, object Id is not available.",
+                                    "type": "string"
+                                },
+                                "principalId": {
+                                    "description": "Set to the principal Id of the client JWT making the request. Service principal will not have the principal Id.",
+                                    "type": "string"
+                                },
+                                "principalName": {
+                                    "description": "Set to the principal name / UPN of the client JWT making the request.",
+                                    "type": "string"
+                                },
+                                "tenantId": {
+                                    "description": "Set to the tenant ID of the client JWT making the request.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "secretStore": {
+                            "description": "The secret store of the user.",
+                            "properties": {
+                                "keyVaultId": {
+                                    "description": "The ID of the user's Key vault.",
+                                    "type": "string"
+                                },
+                                "keyVaultUri": {
+                                    "description": "The URI of the user's Key vault.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-09-15"
+        }
+    }
+}

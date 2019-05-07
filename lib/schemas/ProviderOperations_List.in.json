@@ -1,0 +1,10 @@
+{
+    "type": "object",
+    "properties": {
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-09-15"
+        }
+    }
+}

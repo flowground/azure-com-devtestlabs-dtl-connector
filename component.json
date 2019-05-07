@@ -1,0 +1,2311 @@
+{
+    "title": "DevTestLabsClient",
+    "description": "The DevTest Labs Client.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/devtestlabs-DTL/2018-09-15/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "OAuth2 Implicit Grant",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "ProviderOperations_List": {
+            "main": "./lib/actions/ProviderOperations_List.js",
+            "title": "Result of the request to list REST API operations",
+            "description": "Result of the request to list REST API operations",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProviderOperations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Labs_ListBySubscription": {
+            "main": "./lib/actions/Labs_ListBySubscription.js",
+            "title": "List labs in a subscription.",
+            "description": "List labs in a subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Labs_ListBySubscription.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Operations_Get": {
+            "main": "./lib/actions/Operations_Get.js",
+            "title": "Get operation.",
+            "description": "Get operation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Operations_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GlobalSchedules_ListBySubscription": {
+            "main": "./lib/actions/GlobalSchedules_ListBySubscription.js",
+            "title": "List schedules in a subscription.",
+            "description": "List schedules in a subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GlobalSchedules_ListBySubscription.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Labs_ListByResourceGroup": {
+            "main": "./lib/actions/Labs_ListByResourceGroup.js",
+            "title": "List labs in a resource group.",
+            "description": "List labs in a resource group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Labs_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ArtifactSources_List": {
+            "main": "./lib/actions/ArtifactSources_List.js",
+            "title": "List artifact sources in a given lab.",
+            "description": "List artifact sources in a given lab.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ArtifactSources_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ArmTemplates_List": {
+            "main": "./lib/actions/ArmTemplates_List.js",
+            "title": "List azure resource manager templates in a given artifact source.",
+            "description": "List azure resource manager templates in a given artifact source.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ArmTemplates_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ArmTemplates_Get": {
+            "main": "./lib/actions/ArmTemplates_Get.js",
+            "title": "Get azure resource manager template.",
+            "description": "Get azure resource manager template.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ArmTemplates_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Artifacts_List": {
+            "main": "./lib/actions/Artifacts_List.js",
+            "title": "List artifacts in a given artifact source.",
+            "description": "List artifacts in a given artifact source.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Artifacts_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Artifacts_Get": {
+            "main": "./lib/actions/Artifacts_Get.js",
+            "title": "Get artifact.",
+            "description": "Get artifact.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Artifacts_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Artifacts_GenerateArmTemplate": {
+            "main": "./lib/actions/Artifacts_GenerateArmTemplate.js",
+            "title": "Generates an ARM template for the given artifact, uploads the required files to a storage account, and validates the generated artifact.",
+            "description": "Generates an ARM template for the given artifact, uploads the required files to a storage account, and validates the generated artifact.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Artifacts_GenerateArmTemplate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ArtifactSources_Delete": {
+            "main": "./lib/actions/ArtifactSources_Delete.js",
+            "title": "Delete artifact source.",
+            "description": "Delete artifact source.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ArtifactSources_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ArtifactSources_Get": {
+            "main": "./lib/actions/ArtifactSources_Get.js",
+            "title": "Get artifact source.",
+            "description": "Get artifact source.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ArtifactSources_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ArtifactSources_Update": {
+            "main": "./lib/actions/ArtifactSources_Update.js",
+            "title": "Modify properties of artifact sources.",
+            "description": "Modify properties of artifact sources.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ArtifactSources_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ArtifactSources_CreateOrUpdate": {
+            "main": "./lib/actions/ArtifactSources_CreateOrUpdate.js",
+            "title": "Create or replace an existing artifact source.",
+            "description": "Create or replace an existing artifact source.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ArtifactSources_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Costs_Get": {
+            "main": "./lib/actions/Costs_Get.js",
+            "title": "Get cost.",
+            "description": "Get cost.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Costs_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Costs_CreateOrUpdate": {
+            "main": "./lib/actions/Costs_CreateOrUpdate.js",
+            "title": "Create or replace an existing cost.",
+            "description": "Create or replace an existing cost.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Costs_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CustomImages_List": {
+            "main": "./lib/actions/CustomImages_List.js",
+            "title": "List custom images in a given lab.",
+            "description": "List custom images in a given lab.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CustomImages_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CustomImages_Delete": {
+            "main": "./lib/actions/CustomImages_Delete.js",
+            "title": "Delete custom image. This operation can take a while to complete.",
+            "description": "Delete custom image. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CustomImages_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CustomImages_Get": {
+            "main": "./lib/actions/CustomImages_Get.js",
+            "title": "Get custom image.",
+            "description": "Get custom image.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CustomImages_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CustomImages_Update": {
+            "main": "./lib/actions/CustomImages_Update.js",
+            "title": "Modify properties of custom images.",
+            "description": "Modify properties of custom images.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CustomImages_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CustomImages_CreateOrUpdate": {
+            "main": "./lib/actions/CustomImages_CreateOrUpdate.js",
+            "title": "Create or replace an existing custom image. This operation can take a while to complete.",
+            "description": "Create or replace an existing custom image. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CustomImages_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Formulas_List": {
+            "main": "./lib/actions/Formulas_List.js",
+            "title": "List formulas in a given lab.",
+            "description": "List formulas in a given lab.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Formulas_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Formulas_Delete": {
+            "main": "./lib/actions/Formulas_Delete.js",
+            "title": "Delete formula.",
+            "description": "Delete formula.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Formulas_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Formulas_Get": {
+            "main": "./lib/actions/Formulas_Get.js",
+            "title": "Get formula.",
+            "description": "Get formula.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Formulas_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Formulas_Update": {
+            "main": "./lib/actions/Formulas_Update.js",
+            "title": "Modify properties of formulas.",
+            "description": "Modify properties of formulas.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Formulas_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Formulas_CreateOrUpdate": {
+            "main": "./lib/actions/Formulas_CreateOrUpdate.js",
+            "title": "Create or replace an existing Formula. This operation can take a while to complete.",
+            "description": "Create or replace an existing Formula. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Formulas_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GalleryImages_List": {
+            "main": "./lib/actions/GalleryImages_List.js",
+            "title": "List gallery images in a given lab.",
+            "description": "List gallery images in a given lab.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GalleryImages_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "NotificationChannels_List": {
+            "main": "./lib/actions/NotificationChannels_List.js",
+            "title": "List notification channels in a given lab.",
+            "description": "List notification channels in a given lab.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/NotificationChannels_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "NotificationChannels_Delete": {
+            "main": "./lib/actions/NotificationChannels_Delete.js",
+            "title": "Delete notification channel.",
+            "description": "Delete notification channel.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/NotificationChannels_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "NotificationChannels_Get": {
+            "main": "./lib/actions/NotificationChannels_Get.js",
+            "title": "Get notification channel.",
+            "description": "Get notification channel.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/NotificationChannels_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "NotificationChannels_Update": {
+            "main": "./lib/actions/NotificationChannels_Update.js",
+            "title": "Modify properties of notification channels.",
+            "description": "Modify properties of notification channels.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/NotificationChannels_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "NotificationChannels_CreateOrUpdate": {
+            "main": "./lib/actions/NotificationChannels_CreateOrUpdate.js",
+            "title": "Create or replace an existing notificationChannel.",
+            "description": "Create or replace an existing notificationChannel.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/NotificationChannels_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "NotificationChannels_Notify": {
+            "main": "./lib/actions/NotificationChannels_Notify.js",
+            "title": "Send notification to provided channel.",
+            "description": "Send notification to provided channel.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/NotificationChannels_Notify.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PolicySets_EvaluatePolicies": {
+            "main": "./lib/actions/PolicySets_EvaluatePolicies.js",
+            "title": "Evaluates lab policy.",
+            "description": "Evaluates lab policy.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PolicySets_EvaluatePolicies.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Policies_List": {
+            "main": "./lib/actions/Policies_List.js",
+            "title": "List policies in a given policy set.",
+            "description": "List policies in a given policy set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Policies_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Policies_Delete": {
+            "main": "./lib/actions/Policies_Delete.js",
+            "title": "Delete policy.",
+            "description": "Delete policy.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Policies_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Policies_Get": {
+            "main": "./lib/actions/Policies_Get.js",
+            "title": "Get policy.",
+            "description": "Get policy.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Policies_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Policies_Update": {
+            "main": "./lib/actions/Policies_Update.js",
+            "title": "Modify properties of policies.",
+            "description": "Modify properties of policies.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Policies_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Policies_CreateOrUpdate": {
+            "main": "./lib/actions/Policies_CreateOrUpdate.js",
+            "title": "Create or replace an existing policy.",
+            "description": "Create or replace an existing policy.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Policies_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Schedules_List": {
+            "main": "./lib/actions/Schedules_List.js",
+            "title": "List schedules in a given lab.",
+            "description": "List schedules in a given lab.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Schedules_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Schedules_Delete": {
+            "main": "./lib/actions/Schedules_Delete.js",
+            "title": "Delete schedule.",
+            "description": "Delete schedule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Schedules_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Schedules_Get": {
+            "main": "./lib/actions/Schedules_Get.js",
+            "title": "Get schedule.",
+            "description": "Get schedule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Schedules_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Schedules_Update": {
+            "main": "./lib/actions/Schedules_Update.js",
+            "title": "Modify properties of schedules.",
+            "description": "Modify properties of schedules.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Schedules_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Schedules_CreateOrUpdate": {
+            "main": "./lib/actions/Schedules_CreateOrUpdate.js",
+            "title": "Create or replace an existing schedule.",
+            "description": "Create or replace an existing schedule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Schedules_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Schedules_Execute": {
+            "main": "./lib/actions/Schedules_Execute.js",
+            "title": "Execute a schedule. This operation can take a while to complete.",
+            "description": "Execute a schedule. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Schedules_Execute.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Schedules_ListApplicable": {
+            "main": "./lib/actions/Schedules_ListApplicable.js",
+            "title": "Lists all applicable schedules",
+            "description": "Lists all applicable schedules",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Schedules_ListApplicable.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ServiceRunners_List": {
+            "main": "./lib/actions/ServiceRunners_List.js",
+            "title": "List service runners in a given lab.",
+            "description": "List service runners in a given lab.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ServiceRunners_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ServiceRunners_Delete": {
+            "main": "./lib/actions/ServiceRunners_Delete.js",
+            "title": "Delete service runner.",
+            "description": "Delete service runner.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ServiceRunners_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ServiceRunners_Get": {
+            "main": "./lib/actions/ServiceRunners_Get.js",
+            "title": "Get service runner.",
+            "description": "Get service runner.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ServiceRunners_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ServiceRunners_CreateOrUpdate": {
+            "main": "./lib/actions/ServiceRunners_CreateOrUpdate.js",
+            "title": "Create or replace an existing Service runner.",
+            "description": "Create or replace an existing Service runner.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ServiceRunners_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Users_List": {
+            "main": "./lib/actions/Users_List.js",
+            "title": "List user profiles in a given lab.",
+            "description": "List user profiles in a given lab.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Users_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Users_Delete": {
+            "main": "./lib/actions/Users_Delete.js",
+            "title": "Delete user profile. This operation can take a while to complete.",
+            "description": "Delete user profile. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Users_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Users_Get": {
+            "main": "./lib/actions/Users_Get.js",
+            "title": "Get user profile.",
+            "description": "Get user profile.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Users_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Users_Update": {
+            "main": "./lib/actions/Users_Update.js",
+            "title": "Modify properties of user profiles.",
+            "description": "Modify properties of user profiles.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Users_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Users_CreateOrUpdate": {
+            "main": "./lib/actions/Users_CreateOrUpdate.js",
+            "title": "Create or replace an existing user profile. This operation can take a while to complete.",
+            "description": "Create or replace an existing user profile. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Users_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Disks_List": {
+            "main": "./lib/actions/Disks_List.js",
+            "title": "List disks in a given user profile.",
+            "description": "List disks in a given user profile.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Disks_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Disks_Delete": {
+            "main": "./lib/actions/Disks_Delete.js",
+            "title": "Delete disk. This operation can take a while to complete.",
+            "description": "Delete disk. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Disks_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Disks_Get": {
+            "main": "./lib/actions/Disks_Get.js",
+            "title": "Get disk.",
+            "description": "Get disk.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Disks_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Disks_Update": {
+            "main": "./lib/actions/Disks_Update.js",
+            "title": "Modify properties of disks.",
+            "description": "Modify properties of disks.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Disks_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Disks_CreateOrUpdate": {
+            "main": "./lib/actions/Disks_CreateOrUpdate.js",
+            "title": "Create or replace an existing disk. This operation can take a while to complete.",
+            "description": "Create or replace an existing disk. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Disks_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Disks_Attach": {
+            "main": "./lib/actions/Disks_Attach.js",
+            "title": "Attach and create the lease of the disk to the virtual machine. This operation can take a while to complete.",
+            "description": "Attach and create the lease of the disk to the virtual machine. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Disks_Attach.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Disks_Detach": {
+            "main": "./lib/actions/Disks_Detach.js",
+            "title": "Detach and break the lease of the disk attached to the virtual machine. This operation can take a while to complete.",
+            "description": "Detach and break the lease of the disk attached to the virtual machine. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Disks_Detach.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Environments_List": {
+            "main": "./lib/actions/Environments_List.js",
+            "title": "List environments in a given user profile.",
+            "description": "List environments in a given user profile.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Environments_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Environments_Delete": {
+            "main": "./lib/actions/Environments_Delete.js",
+            "title": "Delete environment. This operation can take a while to complete.",
+            "description": "Delete environment. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Environments_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Environments_Get": {
+            "main": "./lib/actions/Environments_Get.js",
+            "title": "Get environment.",
+            "description": "Get environment.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Environments_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Environments_Update": {
+            "main": "./lib/actions/Environments_Update.js",
+            "title": "Modify properties of environments.",
+            "description": "Modify properties of environments.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Environments_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Environments_CreateOrUpdate": {
+            "main": "./lib/actions/Environments_CreateOrUpdate.js",
+            "title": "Create or replace an existing environment. This operation can take a while to complete.",
+            "description": "Create or replace an existing environment. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Environments_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Secrets_List": {
+            "main": "./lib/actions/Secrets_List.js",
+            "title": "List secrets in a given user profile.",
+            "description": "List secrets in a given user profile.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Secrets_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Secrets_Delete": {
+            "main": "./lib/actions/Secrets_Delete.js",
+            "title": "Delete secret.",
+            "description": "Delete secret.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Secrets_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Secrets_Get": {
+            "main": "./lib/actions/Secrets_Get.js",
+            "title": "Get secret.",
+            "description": "Get secret.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Secrets_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Secrets_Update": {
+            "main": "./lib/actions/Secrets_Update.js",
+            "title": "Modify properties of secrets.",
+            "description": "Modify properties of secrets.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Secrets_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Secrets_CreateOrUpdate": {
+            "main": "./lib/actions/Secrets_CreateOrUpdate.js",
+            "title": "Create or replace an existing secret. This operation can take a while to complete.",
+            "description": "Create or replace an existing secret. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Secrets_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ServiceFabrics_List": {
+            "main": "./lib/actions/ServiceFabrics_List.js",
+            "title": "List service fabrics in a given user profile.",
+            "description": "List service fabrics in a given user profile.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ServiceFabrics_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ServiceFabrics_Delete": {
+            "main": "./lib/actions/ServiceFabrics_Delete.js",
+            "title": "Delete service fabric. This operation can take a while to complete.",
+            "description": "Delete service fabric. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ServiceFabrics_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ServiceFabrics_Get": {
+            "main": "./lib/actions/ServiceFabrics_Get.js",
+            "title": "Get service fabric.",
+            "description": "Get service fabric.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ServiceFabrics_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ServiceFabrics_Update": {
+            "main": "./lib/actions/ServiceFabrics_Update.js",
+            "title": "Modify properties of service fabrics.",
+            "description": "Modify properties of service fabrics.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ServiceFabrics_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ServiceFabrics_CreateOrUpdate": {
+            "main": "./lib/actions/ServiceFabrics_CreateOrUpdate.js",
+            "title": "Create or replace an existing Service Fabric. This operation can take a while to complete.",
+            "description": "Create or replace an existing Service Fabric. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ServiceFabrics_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ServiceFabrics_ListApplicableSchedules": {
+            "main": "./lib/actions/ServiceFabrics_ListApplicableSchedules.js",
+            "title": "Lists the applicable start/stop schedules, if any.",
+            "description": "Lists the applicable start/stop schedules, if any.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ServiceFabrics_ListApplicableSchedules.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ServiceFabrics_Start": {
+            "main": "./lib/actions/ServiceFabrics_Start.js",
+            "title": "Start a service fabric. This operation can take a while to complete.",
+            "description": "Start a service fabric. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ServiceFabrics_Start.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ServiceFabrics_Stop": {
+            "main": "./lib/actions/ServiceFabrics_Stop.js",
+            "title": "Stop a service fabric This operation can take a while to complete.",
+            "description": "Stop a service fabric This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ServiceFabrics_Stop.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ServiceFabricSchedules_List": {
+            "main": "./lib/actions/ServiceFabricSchedules_List.js",
+            "title": "List schedules in a given service fabric.",
+            "description": "List schedules in a given service fabric.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ServiceFabricSchedules_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ServiceFabricSchedules_Delete": {
+            "main": "./lib/actions/ServiceFabricSchedules_Delete.js",
+            "title": "Delete schedule.",
+            "description": "Delete schedule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ServiceFabricSchedules_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ServiceFabricSchedules_Get": {
+            "main": "./lib/actions/ServiceFabricSchedules_Get.js",
+            "title": "Get schedule.",
+            "description": "Get schedule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ServiceFabricSchedules_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ServiceFabricSchedules_Update": {
+            "main": "./lib/actions/ServiceFabricSchedules_Update.js",
+            "title": "Modify properties of schedules.",
+            "description": "Modify properties of schedules.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ServiceFabricSchedules_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ServiceFabricSchedules_CreateOrUpdate": {
+            "main": "./lib/actions/ServiceFabricSchedules_CreateOrUpdate.js",
+            "title": "Create or replace an existing schedule.",
+            "description": "Create or replace an existing schedule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ServiceFabricSchedules_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ServiceFabricSchedules_Execute": {
+            "main": "./lib/actions/ServiceFabricSchedules_Execute.js",
+            "title": "Execute a schedule. This operation can take a while to complete.",
+            "description": "Execute a schedule. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ServiceFabricSchedules_Execute.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_List": {
+            "main": "./lib/actions/VirtualMachines_List.js",
+            "title": "List virtual machines in a given lab.",
+            "description": "List virtual machines in a given lab.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_Delete": {
+            "main": "./lib/actions/VirtualMachines_Delete.js",
+            "title": "Delete virtual machine. This operation can take a while to complete.",
+            "description": "Delete virtual machine. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_Get": {
+            "main": "./lib/actions/VirtualMachines_Get.js",
+            "title": "Get virtual machine.",
+            "description": "Get virtual machine.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_Update": {
+            "main": "./lib/actions/VirtualMachines_Update.js",
+            "title": "Modify properties of virtual machines.",
+            "description": "Modify properties of virtual machines.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_CreateOrUpdate": {
+            "main": "./lib/actions/VirtualMachines_CreateOrUpdate.js",
+            "title": "Create or replace an existing Virtual machine. This operation can take a while to complete.",
+            "description": "Create or replace an existing Virtual machine. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_AddDataDisk": {
+            "main": "./lib/actions/VirtualMachines_AddDataDisk.js",
+            "title": "Attach a new or existing data disk to virtual machine. This operation can take a while to complete.",
+            "description": "Attach a new or existing data disk to virtual machine. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_AddDataDisk.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_ApplyArtifacts": {
+            "main": "./lib/actions/VirtualMachines_ApplyArtifacts.js",
+            "title": "Apply artifacts to virtual machine. This operation can take a while to complete.",
+            "description": "Apply artifacts to virtual machine. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_ApplyArtifacts.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_Claim": {
+            "main": "./lib/actions/VirtualMachines_Claim.js",
+            "title": "Take ownership of an existing virtual machine This operation can take a while to complete.",
+            "description": "Take ownership of an existing virtual machine This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_Claim.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_DetachDataDisk": {
+            "main": "./lib/actions/VirtualMachines_DetachDataDisk.js",
+            "title": "Detach the specified disk from the virtual machine. This operation can take a while to complete.",
+            "description": "Detach the specified disk from the virtual machine. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_DetachDataDisk.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_GetRdpFileContents": {
+            "main": "./lib/actions/VirtualMachines_GetRdpFileContents.js",
+            "title": "Gets a string that represents the contents of the RDP file for the virtual machine",
+            "description": "Gets a string that represents the contents of the RDP file for the virtual machine",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_GetRdpFileContents.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_ListApplicableSchedules": {
+            "main": "./lib/actions/VirtualMachines_ListApplicableSchedules.js",
+            "title": "Lists the applicable start/stop schedules, if any.",
+            "description": "Lists the applicable start/stop schedules, if any.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_ListApplicableSchedules.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_Redeploy": {
+            "main": "./lib/actions/VirtualMachines_Redeploy.js",
+            "title": "Redeploy a virtual machine This operation can take a while to complete.",
+            "description": "Redeploy a virtual machine This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_Redeploy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_Resize": {
+            "main": "./lib/actions/VirtualMachines_Resize.js",
+            "title": "Resize Virtual Machine. This operation can take a while to complete.",
+            "description": "Resize Virtual Machine. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_Resize.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_Restart": {
+            "main": "./lib/actions/VirtualMachines_Restart.js",
+            "title": "Restart a virtual machine. This operation can take a while to complete.",
+            "description": "Restart a virtual machine. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_Restart.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_Start": {
+            "main": "./lib/actions/VirtualMachines_Start.js",
+            "title": "Start a virtual machine. This operation can take a while to complete.",
+            "description": "Start a virtual machine. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_Start.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_Stop": {
+            "main": "./lib/actions/VirtualMachines_Stop.js",
+            "title": "Stop a virtual machine This operation can take a while to complete.",
+            "description": "Stop a virtual machine This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_Stop.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_TransferDisks": {
+            "main": "./lib/actions/VirtualMachines_TransferDisks.js",
+            "title": "Transfers all data disks attached to the virtual machine to be owned by the current user. This operation can take a while to complete.",
+            "description": "Transfers all data disks attached to the virtual machine to be owned by the current user. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_TransferDisks.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_UnClaim": {
+            "main": "./lib/actions/VirtualMachines_UnClaim.js",
+            "title": "Release ownership of an existing virtual machine This operation can take a while to complete.",
+            "description": "Release ownership of an existing virtual machine This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_UnClaim.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineSchedules_List": {
+            "main": "./lib/actions/VirtualMachineSchedules_List.js",
+            "title": "List schedules in a given virtual machine.",
+            "description": "List schedules in a given virtual machine.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineSchedules_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineSchedules_Delete": {
+            "main": "./lib/actions/VirtualMachineSchedules_Delete.js",
+            "title": "Delete schedule.",
+            "description": "Delete schedule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineSchedules_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineSchedules_Get": {
+            "main": "./lib/actions/VirtualMachineSchedules_Get.js",
+            "title": "Get schedule.",
+            "description": "Get schedule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineSchedules_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineSchedules_Update": {
+            "main": "./lib/actions/VirtualMachineSchedules_Update.js",
+            "title": "Modify properties of schedules.",
+            "description": "Modify properties of schedules.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineSchedules_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineSchedules_CreateOrUpdate": {
+            "main": "./lib/actions/VirtualMachineSchedules_CreateOrUpdate.js",
+            "title": "Create or replace an existing schedule.",
+            "description": "Create or replace an existing schedule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineSchedules_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineSchedules_Execute": {
+            "main": "./lib/actions/VirtualMachineSchedules_Execute.js",
+            "title": "Execute a schedule. This operation can take a while to complete.",
+            "description": "Execute a schedule. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineSchedules_Execute.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualNetworks_List": {
+            "main": "./lib/actions/VirtualNetworks_List.js",
+            "title": "List virtual networks in a given lab.",
+            "description": "List virtual networks in a given lab.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualNetworks_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualNetworks_Delete": {
+            "main": "./lib/actions/VirtualNetworks_Delete.js",
+            "title": "Delete virtual network. This operation can take a while to complete.",
+            "description": "Delete virtual network. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualNetworks_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualNetworks_Get": {
+            "main": "./lib/actions/VirtualNetworks_Get.js",
+            "title": "Get virtual network.",
+            "description": "Get virtual network.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualNetworks_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualNetworks_Update": {
+            "main": "./lib/actions/VirtualNetworks_Update.js",
+            "title": "Modify properties of virtual networks.",
+            "description": "Modify properties of virtual networks.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualNetworks_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualNetworks_CreateOrUpdate": {
+            "main": "./lib/actions/VirtualNetworks_CreateOrUpdate.js",
+            "title": "Create or replace an existing virtual network. This operation can take a while to complete.",
+            "description": "Create or replace an existing virtual network. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualNetworks_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Labs_Delete": {
+            "main": "./lib/actions/Labs_Delete.js",
+            "title": "Delete lab. This operation can take a while to complete.",
+            "description": "Delete lab. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Labs_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Labs_Get": {
+            "main": "./lib/actions/Labs_Get.js",
+            "title": "Get lab.",
+            "description": "Get lab.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Labs_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Labs_Update": {
+            "main": "./lib/actions/Labs_Update.js",
+            "title": "Modify properties of labs.",
+            "description": "Modify properties of labs.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Labs_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Labs_CreateOrUpdate": {
+            "main": "./lib/actions/Labs_CreateOrUpdate.js",
+            "title": "Create or replace an existing lab. This operation can take a while to complete.",
+            "description": "Create or replace an existing lab. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Labs_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Labs_ClaimAnyVm": {
+            "main": "./lib/actions/Labs_ClaimAnyVm.js",
+            "title": "Claim a random claimable virtual machine in the lab. This operation can take a while to complete.",
+            "description": "Claim a random claimable virtual machine in the lab. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Labs_ClaimAnyVm.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Labs_CreateEnvironment": {
+            "main": "./lib/actions/Labs_CreateEnvironment.js",
+            "title": "Create virtual machines in a lab. This operation can take a while to complete.",
+            "description": "Create virtual machines in a lab. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Labs_CreateEnvironment.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Labs_ExportResourceUsage": {
+            "main": "./lib/actions/Labs_ExportResourceUsage.js",
+            "title": "Exports the lab resource usage into a storage account This operation can take a while to complete.",
+            "description": "Exports the lab resource usage into a storage account This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Labs_ExportResourceUsage.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Labs_GenerateUploadUri": {
+            "main": "./lib/actions/Labs_GenerateUploadUri.js",
+            "title": "Generate a URI for uploading custom disk images to a Lab.",
+            "description": "Generate a URI for uploading custom disk images to a Lab.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Labs_GenerateUploadUri.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Labs_ImportVirtualMachine": {
+            "main": "./lib/actions/Labs_ImportVirtualMachine.js",
+            "title": "Import a virtual machine into a different lab. This operation can take a while to complete.",
+            "description": "Import a virtual machine into a different lab. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Labs_ImportVirtualMachine.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Labs_ListVhds": {
+            "main": "./lib/actions/Labs_ListVhds.js",
+            "title": "List disk images available for custom image creation.",
+            "description": "List disk images available for custom image creation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Labs_ListVhds.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GlobalSchedules_ListByResourceGroup": {
+            "main": "./lib/actions/GlobalSchedules_ListByResourceGroup.js",
+            "title": "List schedules in a resource group.",
+            "description": "List schedules in a resource group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GlobalSchedules_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GlobalSchedules_Delete": {
+            "main": "./lib/actions/GlobalSchedules_Delete.js",
+            "title": "Delete schedule.",
+            "description": "Delete schedule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GlobalSchedules_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GlobalSchedules_Get": {
+            "main": "./lib/actions/GlobalSchedules_Get.js",
+            "title": "Get schedule.",
+            "description": "Get schedule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GlobalSchedules_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GlobalSchedules_Update": {
+            "main": "./lib/actions/GlobalSchedules_Update.js",
+            "title": "Modify properties of schedules.",
+            "description": "Modify properties of schedules.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GlobalSchedules_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GlobalSchedules_CreateOrUpdate": {
+            "main": "./lib/actions/GlobalSchedules_CreateOrUpdate.js",
+            "title": "Create or replace an existing schedule.",
+            "description": "Create or replace an existing schedule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GlobalSchedules_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GlobalSchedules_Execute": {
+            "main": "./lib/actions/GlobalSchedules_Execute.js",
+            "title": "Execute a schedule. This operation can take a while to complete.",
+            "description": "Execute a schedule. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GlobalSchedules_Execute.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GlobalSchedules_Retarget": {
+            "main": "./lib/actions/GlobalSchedules_Retarget.js",
+            "title": "Updates a schedule's target resource Id. This operation can take a while to complete.",
+            "description": "Updates a schedule's target resource Id. This operation can take a while to complete.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GlobalSchedules_Retarget.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
